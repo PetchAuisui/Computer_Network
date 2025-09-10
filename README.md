@@ -61,8 +61,6 @@ router ospf 1
 ip route 0.0.0.0 0.0.0.0 192.51.3.1
 
 end
-wr mem
-
 ```
 
 ### - ISP Router
@@ -86,8 +84,6 @@ interface GigabitEthernet0/0/1
 ip route 0.0.0.0 0.0.0.0 200.200.200.2
 
 end
-wr mem
-
 ```
 
 ### - R1
@@ -119,8 +115,6 @@ router ospf 1
 ip route 0.0.0.0 0.0.0.0 200.200.200.1
 
 end
-wr mem
-
 ```
 
 ### - SW1–SW4
@@ -152,8 +146,6 @@ interface FastEthernet0/3
  no shutdown
 
 end
-wr mem
-
 ```
 
 ## 2.บล็อก ACL บล็อกไม่ให้ VLAN 10 เข้า WebServer 
@@ -187,5 +179,4 @@ interface g0/0/0
  ip nat outside
 !
 end
-wr mem
 ```
