@@ -169,7 +169,7 @@ interface g0/0/0
 ```
 
 ## 3.เลือกใช้ NAT หน่วยงานมี Public IP เพี่ยง 1 อัน
-
+### R1
 ```cisco
 conf t
 !
