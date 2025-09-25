@@ -1,4 +1,5 @@
 # ReExamSpecialTopics-1-2568
+<img width="1051" height="550" alt="image" src="https://github.com/user-attachments/assets/b8983c67-07f5-47eb-a6ca-ddf3d160055d" />
 
 ## 1. PC ทุกตัวสามารถ ping ไปหา loopback ได้
 ### R1
