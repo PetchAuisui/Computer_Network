@@ -1,4 +1,5 @@
-# Final Network SpecialTopicsInComputer อาจารย์ : อำพล
+# Final Network SpecialTopicsInComputer
+<img width="1817" height="768" alt="image" src="https://github.com/user-attachments/assets/2a77e1ca-53dd-4d34-bfbb-fe8323e24057" />
 
 ## 1.คั้งค่า ospf และ default routing
 
