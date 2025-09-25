@@ -1,0 +1,102 @@
+# ReExamSpecialTopics-1-2568
+
+## 1. PC ทุกตัวสามารถ ping ไปหา loopback ได้
+### R1
+```
+!
+hostname R1
+!
+interface GigabitEthernet0/0/0
+ description to-R2
+ ip address 209.165.200.230 255.255.255.248
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ no shutdown
+!
+interface GigabitEthernet0/0/1.10
+ encapsulation dot1q 10
+ ip address 192.51.10.1 255.255.255.0
+ no shutdown
+!
+interface GigabitEthernet0/0/1.20
+ encapsulation dot1q 20
+ ip address 192.51.20.1 255.255.255.0
+ no shutdown
+!
+! Default route ชี้ไปหา R2
+ip route 0.0.0.0 0.0.0.0 209.165.200.225
+!
+end
+```
+### R2
+
+```
+!
+hostname R2
+!
+interface GigabitEthernet0/0/0
+ description to-R1
+ ip address 209.165.200.225 255.255.255.248
+ no shutdown
+!
+interface Loopback1
+ ip address 209.165.200.1 255.255.255.224
+!
+! Default route กลับไปทาง R1
+ip route 0.0.0.0 0.0.0.0 209.165.200.230
+!
+end
+```
+
+### SW1
+```
+!
+hostname SW1
+!
+vlan 10
+ name VLAN10
+vlan 20
+ name VLAN20
+!
+! พอร์ต f0/1 ต่อกับ R1 → trunk
+interface fastEthernet0/1
+ switchport mode trunk
+!
+! พอร์ต f0/2 ต่อกับ SW2 → trunk
+interface fastEthernet0/2
+ switchport mode trunk
+!
+! พอร์ต f0/3 
+interface fastEthernet0/3
+ switchport mode access
+ switchport access vlan 10
+!
+end
+```
+
+### SW2
+```
+!
+hostname SW2
+!
+vlan 10
+ name VLAN10
+vlan 20
+ name VLAN20
+!
+interface fastEthernet0/1
+ switchport mode trunk
+!
+! พอร์ต f0/2 (ตัวอย่าง) → Access VLAN10 
+interface fastEthernet0/2
+ switchport access vlan 10
+!
+! พอร์ต f0/3 (ตัวอย่าง) → Access VLAN20 
+interface fastEthernet0/3
+ switchport access vlan 20
+!
+end
+```
+
+
